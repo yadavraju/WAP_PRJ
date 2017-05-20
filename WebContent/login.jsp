@@ -42,18 +42,18 @@
 			<p class="fieldset">
 				<label class="image-replace" for="">First Name</label> <input
 					class="half-width has-padding has-border" id="signup-firstname"
-					name="fname" type="text" placeholder="First Name"> <span
+					name="fname" type="text" placeholder="First Name" required> <span
 					class="cd-error-message">Error message here!</span> <label
 					class="image-replace" for="">Last Name</label> <input
 					class="half-width has-padding has-border" id="signup-lastname"
-					name="lname" type="text" placeholder="Last Name"> <span
+					name="lname" type="text" placeholder="Last Name" required> <span
 					class="cd-error-message">Error message here!</span>
 			</p>
 
 			<p class="fieldset">
 				<label class="image-replace cd-email" for="signup-email">E-mail</label>
 				<input class="full-width has-padding has-border" id="signup-email"
-					name="email" type="email" placeholder="E-mail"> <span
+					name="email" type="email" placeholder="E-mail" required> <span
 					class="cd-error-message">Error message here!</span>
 			</p>
 
@@ -61,7 +61,7 @@
 				<label class="image-replace cd-password" for="signup-password">Password</label>
 				<input class="full-width has-padding has-border"
 					id="signup-password" name="password" type="text"
-					placeholder="Password"> <span class="cd-error-message">Error
+					placeholder="Password" required> <span class="cd-error-message">Error
 					message here!</span>
 			</p>
 
@@ -149,22 +149,16 @@
 				password : pwd
 			}).done(function(data) {
 				//$("#loginerr").html("Login success!");
-				console.log("------------")
-				console.log(data)
-				console.log("------------")
-				if("" == 201){
-					
-				}else{
+				var objData = JSON.parse(data);
+				if(objData.code == "200"){
 					window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
+				}else{
+					console.log(objData.msg);
+					$("#loginerr").html("Email or Password not correct!");
 				}
 
 			}).fail(function(xhr, st) {
-				$("#errorId").append($("<p>", {
-					"class" : "error"
-				})).css({
-					"color" : "red",
-					"font-size" : "24px"
-				}).html("Login failed: " + st);
+				$("#loginerr").html("Something is wrong:" + st);
 			}).always(function() {
 				
 			});
@@ -176,26 +170,24 @@
 			var email = $("#signup-email").val();
 			var pwd = $("#signup-password").val();
 
-			$.get("UserController", {
+			$.post("UserController", {
 				fname : firstname,
 				lname : lastname,
 				email : email,
 				password : pwd
 			}).done(function(data) {
-				//$("#loginerr").html("Register successfully! ");
-				alert("Register successfully!");
-				window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
+				console.log(data);
+				//var oData = JSON.parse(data);
+				if(data.code == "200"){
+// 					console.log("ok");
+					alert("Registration is successful!");
+					window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
+				}else{
+					$("#loginerr").html("Failed to register, please check the fields!");
+				}
 			}).fail(function(xhr, st) {
-				$("#errorId").append($("<p>", {
-					"class" : "error"
-				})).css({
-					"color" : "red",
-					"font-size" : "24px"
-				}).html("login failed: " + st);
+				$("#loginerr").html("Something is wrong:" + st);
 			}).always(function() {
-				$(".loading").remove();
-				$("#inputs").after(out);
-				$(".showComment").click(getComment);
 			}); 
 		}
 	</script>
