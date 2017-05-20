@@ -1,12 +1,15 @@
 package com.wap.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.wap.dao.imp.UserDAO;
 import com.wap.dao.imp.userDaoImplementation;
 import com.wap.model.UserModel;
@@ -40,7 +43,9 @@ public class LoginRequest extends HttpServlet {
 		user.setEmail(username);
 		user.setPassword(password);
 		String message = dao.LoginUser(user);
-         
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");	      
         response.getWriter().write(message);
 	}
 
