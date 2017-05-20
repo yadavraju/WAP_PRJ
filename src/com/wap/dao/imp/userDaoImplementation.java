@@ -2,6 +2,7 @@ package com.wap.dao.imp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.wap.model.UserModel;
@@ -17,8 +18,29 @@ public class userDaoImplementation implements  UserDAO{
     }
 
 	@Override
-	public void LoginUser(UserModel user) {
+	public String LoginUser(UserModel user) {
 		// TODO Auto-generated method stub
+		String message = null;
+        try {
+        	String q = "select email, password from user where email = ? and password = ?";
+            PreparedStatement statement = conn.prepareStatement(q);
+            //setting the parameters
+            statement.setString(1, user.getEmail());
+            statement.setString(2, user.getPassword());
+            //executing the prepared statement, which returns a ResultSet
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                message = "SUCCESS";
+            }else{
+                message = "FAILURE";
+            }
+           // statement.executeUpdate();
+            //statement.close();
+        } catch (SQLException e) {
+        	message = "FAILURE";
+            e.printStackTrace();
+        }
+		return message;
 		
 	}
 
@@ -36,8 +58,9 @@ public class userDaoImplementation implements  UserDAO{
             preparedStatement.setString( 7, "N/a" );
             preparedStatement.setString( 8, "N/a" );
             preparedStatement.executeUpdate();
-            preparedStatement.close();
+
             Utill.suceesfullyRegister = true;
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,6 +1,7 @@
 package com.wap.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -51,6 +52,7 @@ public class UserController extends HttpServlet {
 		
 		RequestDispatcher view = request.getRequestDispatcher(HOMEPAGE);
 		view.forward(request, response);
+		
 		// doGet(request, response);
 
 	}
