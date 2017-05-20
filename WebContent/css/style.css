@@ -19,6 +19,20 @@ body {
   font-family: "PT Sans", sans-serif;
   color: #505260;
   background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+div#header {
+	font-weight: bold;
+	text-align: right;	
+	padding: 1.4em;
+	background-color:lightgreen;
+}
+
+div#body {
+	float: right;
+	width: 40%
 }
 
 a {
@@ -318,8 +332,12 @@ xsigin/signup popup
   border-radius: 0.25em;
 }
 .cd-form input.full-width {
-  width: 100%;
+  width: 226px;
 }
+.cd-form input.half-width {
+	width: 260px;
+}
+
 .cd-form input.has-padding {
   padding: 12px 20px 12px 50px;
 }
@@ -346,8 +364,7 @@ xsigin/signup popup
 .cd-form input[type=submit] {
   padding: 16px 0;
   cursor: pointer;
-  background: #2f889a;
-  color: #FFF;
+  background: lightgreen;
   font-weight: bold;
   border: none;
   -webkit-appearance: none;
