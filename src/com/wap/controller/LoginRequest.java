@@ -36,6 +36,8 @@ public class LoginRequest extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
+        System.out.println("============"+username+password);
+        
 		UserModel user = new UserModel();
 		user.setEmail(username);
 		user.setPassword(password);
