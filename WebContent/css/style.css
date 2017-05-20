@@ -23,16 +23,17 @@ body {
   padding: 0;
 }
 
-div#header {
+#header {
 	font-weight: bold;
 	text-align: right;	
 	padding: 1.4em;
 	background-color:lightgreen;
 }
 
-div#body {
+#body {
 	float: right;
-	width: 40%
+	width: 40%;
+	margin-top: 20px;
 }
 
 a {
@@ -317,6 +318,20 @@ xsigin/signup popup
   background-repeat: no-repeat;
   background-position: 50% 0;
 }
+
+.cd-form label.image-login {
+  /* replace text with an icon */
+  left: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 10px;
+  width: 20px;
+}
+
 .cd-form label.cd-username {
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-username.svg");
 }
@@ -332,10 +347,10 @@ xsigin/signup popup
   border-radius: 0.25em;
 }
 .cd-form input.full-width {
-  width: 226px;
+  width: 460px;
 }
 .cd-form input.half-width {
-	width: 260px;
+	width: 226px;
 }
 
 .cd-form input.has-padding {
