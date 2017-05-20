@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -76,22 +76,22 @@
 
 				<div id="cd-signup">
 					<!-- sign up form -->
-					<form class="cd-form">
+					<form action = "UserController" method = "post" class="cd-form">
 						<p class="fieldset">
 							<label class="image-replace cd-username" for="signup-username">Username</label>
-							<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+							<input class="full-width has-padding has-border" id="signup-username" name ="fname" type="text" placeholder="Username">
 							<span class="cd-error-message">Error message here!</span>
 						</p>
 
 						<p class="fieldset">
 							<label class="image-replace cd-email" for="signup-email">E-mail</label>
-							<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+							<input class="full-width has-padding has-border" id="signup-email"  name ="email" type="email" placeholder="E-mail">
 							<span class="cd-error-message">Error message here!</span>
 						</p>
 
 						<p class="fieldset">
 							<label class="image-replace cd-password" for="signup-password">Password</label>
-							<input class="full-width has-padding has-border" id="signup-password" type="text" placeholder="Password">
+							<input class="full-width has-padding has-border" id="signup-password" name ="password" type="text" placeholder="Password">
 							<a href="#0" class="hide-password">Hide</a>
 							<span class="cd-error-message">Error message here!</span>
 						</p>
