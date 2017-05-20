@@ -149,7 +149,15 @@
 				password : pwd
 			}).done(function(data) {
 				//$("#loginerr").html("Login success!");
-				window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
+				console.log("------------")
+				console.log(data)
+				console.log("------------")
+				if("" == 201){
+					
+				}else{
+					window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
+				}
+
 			}).fail(function(xhr, st) {
 				$("#errorId").append($("<p>", {
 					"class" : "error"
