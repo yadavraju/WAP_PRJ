@@ -48,12 +48,11 @@ public class UserController extends HttpServlet {
 		user.setfName(request.getParameter("fname"));
 		user.setlName(request.getParameter("lname"));
 		user.setPassword(request.getParameter("password"));
-		dao.RgisterUser(user);
+		String message = dao.RgisterUser(user);
 		
-		RequestDispatcher view = request.getRequestDispatcher(HOMEPAGE);
-		view.forward(request, response);
-		
-		// doGet(request, response);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");	      
+        response.getWriter().write(message);
 
 	}
 

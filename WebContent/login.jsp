@@ -27,12 +27,12 @@
 	</div>
 	
 	
-		<div id="divId">
+<!-- 		<div id="divId">
 			Username : <input type="text" name="username" id="username" /></br>
 			Password : <input type="password" name="password" id="password" /></br>
 			<button name="login" id="login">Login</button>
 		</div>
-		<div id="messageDiv" style="display: block;">sfdsgfd</div>
+		<div id="messageDiv" style="display: block;">sfdsgfd</div> -->
 
 
 	<div id='body'>
@@ -74,59 +74,61 @@
 	</div>
 	<script>
 	 //NEW javascript
-	 $("#login").on('click', function(){
-         var username = $("#divId #username").val();
-         var password = $("#divId #password").val();
-         if(username == ""){
-             $('#messageDiv').css("display","none");
-             alert("Username is required");
-             return;
-         }
-         if(password == ""){
-             $('#messageDiv').css("display","none");
-             alert("Password is required");
-             return;
-         }
+//  	 $("#login").on('click', function(){
+//          var email = $("#username").val();
+//          var password = $("#pwd").val();
+//  		$(function() {
+// 			$("#submitform").on("submit", function(ev) {
+// 				login();
+// 				ev.preventDefault();
+// 			});
+
+// 			$("#signupform").on("submit", function(ev) {
+// 				signup();
+// 				ev.preventDefault();
+// 			});
+// 		});
          
-         alert(username+password);
-         $.ajax({
-             url : "LoginRequest",
-             type : "get",
-             data : {
-                 username : username,
-                 password : password
-             },
-             success : function(results){
-            	// alert("sucess"+results);
-                 if(results != null && results != ""){
-                     showMessage(results);
-                     $('#messageDiv').css("display","block");
-                 }else{
-                     $('#messageDiv').css("display","none");
-                     $('#messageDiv').html("");
-                     alert("Some exception occurred! Please try again.");
-                 }
-             },
+//          //alert(username+password);
+//          $.ajax({
+//              url : "LoginRequest",
+//              type : "get",
+//              data : {
+//                  username : username,
+//                  password : password
+//              },
+//              success : function(results){
+//             	// alert("sucess"+results);
+//                  if(results != null && results != ""){
+//                      showMessage(results);
+//                      $('#messageDiv').css("display","block");
+//                  }else{
+//                      $('#messageDiv').css("display","none");
+//                      $('#messageDiv').html("");
+//                      alert("Some exception occurred! Please try again.");
+//                  }
+//              },
              
-             error : function () {
-            	 alert("fail");
+//              error : function () {
+//             	 alert("fail");
 				
-			}
-         });
-     });
+// 			}
+//          });
+//      });
       
-     //function to display message to the user
-     function showMessage(results){
-         if(results == 'SUCCESS'){
-             $('#messageDiv').html("<font color='green'>You are successfully logged in. </font>")
+//      //function to display message to the user
+//      function showMessage(results){
+//          if(results == 'SUCCESS'){
+//              $('#messageDiv').html("<font color='green'>You are successfully logged in. </font>")
         
-               window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
+<%--                window.location.href = "<%=request.getContextPath()%>/HomePageServlet"; --%>
          
-         }else if(results == 'FAILURE'){
-             $('#messageDiv').html("<font color='red'>Username or password incorrect </font>")
-         }
-     }
-		/* $(function() {
+//          }else if(results == 'FAILURE'){
+//              $('#messageDiv').html("<font color='red'>Username or password incorrect </font>")
+//          }
+//      } 
+     
+		$(function() {
 			$("#submitform").on("submit", function(ev) {
 				login();
 				ev.preventDefault();
@@ -139,25 +141,32 @@
 		});
 
 		function login() {
-			var username = $("#email").val();
+			var email = $("#email").val();
 			var pwd = $("#pwd").val();
 
-			$.get("test.json", {
-				u : username,
-				p : pwd
+			$.get("LoginRequest", {
+				username : email,
+				password : pwd
 			}).done(function(data) {
-				$("#loginerr").html("Login failed: ");
+				//$("#loginerr").html("Login success!");
+				console.log("------------")
+				console.log(data)
+				console.log("------------")
+				if("" == 201){
+					
+				}else{
+					window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
+				}
+
 			}).fail(function(xhr, st) {
 				$("#errorId").append($("<p>", {
 					"class" : "error"
 				})).css({
 					"color" : "red",
 					"font-size" : "24px"
-				}).html("login failed: " + st);
+				}).html("Login failed: " + st);
 			}).always(function() {
-				$(".loading").remove();
-				$("#inputs").after(out);
-				$(".showComment").click(getComment);
+				
 			});
 		}
 
@@ -167,13 +176,15 @@
 			var email = $("#signup-email").val();
 			var pwd = $("#signup-password").val();
 
-			$.get("signup.json", {
-				fn : firstname,
-				ln : lastname,
+			$.get("UserController", {
+				fname : firstname,
+				lname : lastname,
 				email : email,
 				password : pwd
 			}).done(function(data) {
-				$("#loginerr").html("Login failed: ");
+				//$("#loginerr").html("Register successfully! ");
+				alert("Register successfully!");
+				window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
 			}).fail(function(xhr, st) {
 				$("#errorId").append($("<p>", {
 					"class" : "error"
@@ -186,7 +197,7 @@
 				$("#inputs").after(out);
 				$(".showComment").click(getComment);
 			}); 
-		}*/
+		}
 	</script>
 </body>
 </html>
