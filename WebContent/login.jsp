@@ -144,7 +144,7 @@
 			var email = $("#email").val();
 			var pwd = $("#pwd").val();
 
-			$.get("LoginServlet", {
+			$.get("LoginRequest", {
 				username : email,
 				password : pwd
 			}).done(function(data) {
