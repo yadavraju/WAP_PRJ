@@ -30,14 +30,14 @@ public class userDaoImplementation implements  UserDAO{
             //executing the prepared statement, which returns a ResultSet
             ResultSet rs = statement.executeQuery();
             if(rs.next()){
-                message = Utill.successJson;
+                message = "SUCCESS";
             }else{
-            	 message = Utill.failJson;;
+                message = "FAILURE";
             }
            // statement.executeUpdate();
             //statement.close();
         } catch (SQLException e) {
-        	 message = Utill.failJson;;
+        	message = "FAILURE";
             e.printStackTrace();
         }
 		return message;
@@ -45,8 +45,7 @@ public class userDaoImplementation implements  UserDAO{
 	}
 
 	@Override
-	public String RgisterUser(UserModel user) {
-		String message = null;
+	public void RgisterUser(UserModel user) {
         try {
             String query = "insert into user (email, fname, lname, password,contactno,profileimage,address, gender) values (?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = conn.prepareStatement( query );
@@ -58,21 +57,14 @@ public class userDaoImplementation implements  UserDAO{
             preparedStatement.setString( 6, "N/a" );
             preparedStatement.setString( 7, "N/a" );
             preparedStatement.setString( 8, "N/a" );
-            int executeUpdate = preparedStatement.executeUpdate();
-            
-            if(executeUpdate==1){
-                message = Utill.successJson;
-            }else{
-            	 message = Utill.failJson;;
-            }
+            preparedStatement.executeUpdate();
 
             Utill.suceesfullyRegister = true;
             preparedStatement.close();
         } catch (SQLException e) {
-        	message = Utill.failJson;;
             e.printStackTrace();
         }
-        return message;
+		
 	}
 
 }

@@ -1,7 +1,6 @@
 package com.wap.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,18 +33,14 @@ public class LoginRequest extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("sdfsgs");
         String username = request.getParameter("username");
-        
         String password = request.getParameter("password");
         
 		UserModel user = new UserModel();
 		user.setEmail(username);
 		user.setPassword(password);
 		String message = dao.LoginUser(user);
-		
-		response.setContentType("application/json");
-		response.setCharacterEncoding("utf-8");	      
+         
         response.getWriter().write(message);
 	}
 
