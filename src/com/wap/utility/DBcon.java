@@ -1,7 +1,8 @@
 package com.wap.utility;
 
 import java.io.*;     
-import java.sql.*;     
+import java.sql.*;
+import java.util.Properties;     
  
 public class DBcon {     
        public static String driver;
@@ -11,13 +12,15 @@ public class DBcon {
        public static Connection conn;     
        public static Statement stmt;
        public ResultSet rs;
-       //configuration CONN     
+       //configuration CONN
+       InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream( "/config.properties" );
+       Properties properties=new Properties();
        static{     
            try {   
                driver="com.mysql.jdbc.Driver";  
                url="jdbc:mysql://localhost:3306/wapproject?useUnicode=true&characterEncoding=utf-8";  
                user="root";  
-               password="root";  
+               password="root";                
                Class.forName(driver);     
                conn = DriverManager.getConnection(url,user,password);  
                System.out.println("-------connection successful------");  
