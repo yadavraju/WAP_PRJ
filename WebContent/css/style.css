@@ -27,7 +27,7 @@ body {
 	font-weight: bold;
 	text-align: right;	
 	padding: 1.4em;
-	background-color:lightgreen;
+	background-color:#009688;
 }
 
 #body {
@@ -386,7 +386,7 @@ xsigin/signup popup
 .cd-form input[type=submit] {
   padding: 16px 0;
   cursor: pointer;
-  background: lightgreen;
+  background: #009688;
   font-weight: bold;
   border: none;
   -webkit-appearance: none;
