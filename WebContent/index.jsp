@@ -32,7 +32,9 @@
 		</p>
 	</div>
 	<div id="divbody">
-		<div id="divleftbody"></div>
+		<div id="divleftbody">
+		<%@ include file="profile.html" %>
+		</div>
 		<div id="divrightbody"></div>
 	</div>
 	

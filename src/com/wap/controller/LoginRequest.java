@@ -1,6 +1,8 @@
 package com.wap.controller;
 
 import java.io.IOException;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,9 +43,9 @@ public class LoginRequest extends HttpServlet {
 		UserModel user = new UserModel();
 		user.setEmail(username);
 		user.setPassword(password);
-		String message = dao.LoginUser(user);
-         
-        response.getWriter().write(message);
+		Map<String,String> map = dao.LoginUser(user);
+        request.getSession().setAttribute("id", map.get("id"));
+        response.getWriter().write(map.get("message"));
 	}
 
 

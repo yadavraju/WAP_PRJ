@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
 
@@ -28,9 +30,11 @@ public class userDaoImplementation implements UserDAO {
 	}
 
 	@Override
-	public String LoginUser(UserModel user) {
+	public Map<String,String> LoginUser(UserModel user) {
 		// TODO Auto-generated method stub
 		String message = null;
+		Map<String,String> map = new HashMap<String,String>();
+
 		try {
 			String q = "select email, password from user where email = ? and password = ?";
 			statement = conn.prepareStatement(q);
@@ -56,6 +60,7 @@ public class userDaoImplementation implements UserDAO {
 					obj.put("profileimage", rs.getString("profileimage"));
 					obj.put("address", rs.getString("address"));
 					obj.put("gender", rs.getString("gender"));
+					map.put("id", String.valueOf(rs.getInt("id")));
 				}
 				message = obj.toJSONString();
 				System.out.println(message);
@@ -73,7 +78,8 @@ public class userDaoImplementation implements UserDAO {
 			message = obj.toJSONString();
 			e.printStackTrace();
 		}
-		return message;
+		map.put("message", message);
+		return map;
 
 	}
 
