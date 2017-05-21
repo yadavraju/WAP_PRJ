@@ -1,5 +1,10 @@
 package com.wap.dao.imp;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.wap.model.LikeModel;
 import com.wap.utility.DBcon;
 
@@ -31,6 +36,27 @@ public class likeDaoImplementation implements LikeDAO {
 		
 	    dbcon.doDelete(sql);
 		
+	}
+
+	@Override
+	public List<LikeModel> UserlikeList() throws SQLException {
+		// TODO Auto-generated method stub
+		
+		List<LikeModel> userlikeList =new ArrayList<LikeModel>();
+		
+		String sql="select * from userlike order by lid";
+		ResultSet rs=dbcon.doSelect(sql);
+		
+		while(rs.next()){
+			LikeModel userlike=new LikeModel();
+			userlike.setLid(rs.getInt("lid"));
+			userlike.setPostid(rs.getInt("postid"));
+			userlike.setUserid(rs.getInt("userid"));
+			userlike.setDate(rs.getDate("date"));
+			userlikeList.add(userlike);
+		}
+		
+		return userlikeList;
 	}
 
 }

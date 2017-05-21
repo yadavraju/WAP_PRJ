@@ -1,5 +1,10 @@
 package com.wap.dao.imp;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.wap.model.CommentModel;
 import com.wap.utility.DBcon;
 
@@ -28,6 +33,27 @@ public class commentDaoImplementation implements CommentDAO {
 		// TODO Auto-generated method stub
 		String sql="delete from comment where id="+id;
 		dbcon.doDelete(sql);
+	}
+
+	@Override
+	public List<CommentModel> CommentList() throws SQLException {
+		// TODO Auto-generated method stub
+		
+		List<CommentModel> commentList=new ArrayList<CommentModel>();
+		
+		String sql="select * from comment order by cid";
+		
+		ResultSet rs=dbcon.doSelect(sql);
+		while (rs.next()){
+			CommentModel comment=new CommentModel();
+			comment.setCid(rs.getInt("cid"));
+			comment.setPostid(rs.getInt("postid"));
+			comment.setUserid(rs.getInt("userid"));
+			comment.setComment(rs.getString("comment"));
+			comment.setDate(rs.getDate("date"));
+			commentList.add(comment);
+		}
+		return commentList;
 	}
 
 }

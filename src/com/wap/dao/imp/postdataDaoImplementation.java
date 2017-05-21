@@ -2,6 +2,8 @@ package com.wap.dao.imp;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.wap.model.PostdataModel;
 import com.wap.utility.DBcon;
@@ -42,25 +44,27 @@ public class postdataDaoImplementation implements PostdataDAO {
 	}
 
 	@Override
-	public PostdataModel[] showPostdata() throws SQLException {
+	public List<PostdataModel> PostdataQuery() throws SQLException {
 		// TODO Auto-generated method stub
-		String sql="select * from postdata";
+		List<PostdataModel> postdataList=new ArrayList<PostdataModel>();
+		
+		String sql="select * from postdata order by pid";
 		ResultSet rs=dbcon.doSelect(sql);
-		int rows=rs.getRow();
-		int i=0;
-		PostdataModel[] postdataRows=new PostdataModel[rows];
+		
 		if(rs.next()){
-			postdataRows[i].setPid(rs.getInt("pid"));
-			postdataRows[i].setProduct_you_offer(rs.getString("product_you_offer"));
-			postdataRows[i].setDescribe_your_offer(rs.getString("describe_your_offer"));
-			postdataRows[i].setProduct_you_need(rs.getString("product_you_need"));
-			postdataRows[i].setLike_count(rs.getInt("like_count"));
-			postdataRows[i].setComment_count(rs.getInt("comment_count"));
-			postdataRows[i].setUserid(rs.getInt("userid"));
-			postdataRows[i].setDate(rs.getDate("date"));
+			PostdataModel postdata=new PostdataModel();
+			postdata.setPid(rs.getInt("pid"));
+			postdata.setProduct_you_offer(rs.getString("product_you_offer"));
+			postdata.setDescribe_your_offer(rs.getString("describe_your_offer"));
+			postdata.setProduct_you_need(rs.getString("product_you_need"));
+			postdata.setLike_count(rs.getInt("like_count"));
+			postdata.setComment_count(rs.getInt("comment_count"));
+			postdata.setUserid(rs.getInt("userid"));
+			postdata.setDate(rs.getDate("date"));
+			postdataList.add(postdata);
 		}
 		
-		return postdataRows;
+		return postdataList;
 	}
 
 	@Override
