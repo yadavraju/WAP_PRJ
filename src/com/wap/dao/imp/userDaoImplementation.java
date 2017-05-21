@@ -3,76 +3,135 @@ package com.wap.dao.imp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 
+import org.json.simple.JSONObject;
+
+import com.google.gson.Gson;
 import com.wap.model.UserModel;
 import com.wap.utility.DBUtil;
 import com.wap.utility.Utill;
 
-public class userDaoImplementation implements  UserDAO{
-	
-    private Connection conn;
-    
-    public userDaoImplementation() {
-        conn = DBUtil.getConnection();
-    }
+public class userDaoImplementation implements UserDAO {
+
+	private Connection conn;
+	private PreparedStatement statement;
+	private ResultSet rs;
+	private JSONObject obj = new JSONObject();
+
+	public userDaoImplementation() {
+		conn = DBUtil.getConnection();
+	}
 
 	@Override
 	public String LoginUser(UserModel user) {
 		// TODO Auto-generated method stub
 		String message = null;
-        try {
-        	String q = "select email, password from user where email = ? and password = ?";
-            PreparedStatement statement = conn.prepareStatement(q);
-            //setting the parameters
-            statement.setString(1, user.getEmail());
-            statement.setString(2, user.getPassword());
-            //executing the prepared statement, which returns a ResultSet
-            ResultSet rs = statement.executeQuery();
-            if(rs.next()){
-                message = Utill.successJson;
-            }else{
-            	 message = Utill.failJson;;
-            }
-           // statement.executeUpdate();
-            //statement.close();
-        } catch (SQLException e) {
-        	 message = Utill.failJson;;
-            e.printStackTrace();
-        }
+		try {
+			String q = "select email, password from user where email = ? and password = ?";
+			statement = conn.prepareStatement(q);
+			// setting the parameters
+			statement.setString(1, user.getEmail());
+			statement.setString(2, user.getPassword());
+			rs = statement.executeQuery();
+			if (rs.next()) {
+				rs = statement.executeQuery("select * from user where email='" + user.getEmail() + "' and password='"
+						+ user.getPassword() + "'");
+				while (rs.next()) {
+
+					obj.put("code", "200");
+					obj.put("msg", "Login Sucessfull");
+					obj.put("id", "" + rs.getInt("id"));
+					obj.put("email", rs.getString("email"));
+					obj.put("fname", rs.getString("fname"));
+					obj.put("lname", rs.getString("lname"));
+					obj.put("email", rs.getString("email"));
+					obj.put("fname", rs.getString("fname"));
+					obj.put("lname", rs.getString("lname"));
+					obj.put("contactno", rs.getString("contactno"));
+					obj.put("profileimage", rs.getString("profileimage"));
+					obj.put("address", rs.getString("address"));
+					obj.put("gender", rs.getString("gender"));
+				}
+				message = obj.toJSONString();
+				System.out.println(message);
+			} else {
+				obj.put("code", "201");
+				obj.put("msg", "Login fail User and password not coreect");
+				message = obj.toJSONString();
+				System.out.println(message);
+
+			}
+			statement.close();
+		} catch (SQLException e) {
+			obj.put("code", "201");
+			obj.put("msg", "Login fail User and password not coreect");
+			message = obj.toJSONString();
+			e.printStackTrace();
+		}
 		return message;
-		
+
 	}
 
 	@Override
 	public String RgisterUser(UserModel user) {
 		String message = null;
-        try {
-            String query = "insert into user (email, fname, lname, password,contactno,profileimage,address, gender) values (?,?,?,?,?,?,?,?)";
-            PreparedStatement preparedStatement = conn.prepareStatement( query );
-            preparedStatement.setString( 1, user.getEmail() );
-            preparedStatement.setString( 2, user.getfName() );
-            preparedStatement.setString( 3, user.getlName() );
-            preparedStatement.setString( 4, user.getPassword() );
-            preparedStatement.setString( 5, "N/a" );
-            preparedStatement.setString( 6, "N/a" );
-            preparedStatement.setString( 7, "N/a" );
-            preparedStatement.setString( 8, "N/a" );
-            int executeUpdate = preparedStatement.executeUpdate();
-            
-            if(executeUpdate==1){
-                message = Utill.successJson;
-            }else{
-            	 message = Utill.failJson;;
-            }
+		try {
+			String query = "insert into user (email, fname, lname, password,contactno,profileimage,address, gender) values (?,?,?,?,?,?,?,?)";
+			statement = conn.prepareStatement(query);
+			statement.setString(1, user.getEmail());
+			statement.setString(2, user.getfName());
+			statement.setString(3, user.getlName());
+			statement.setString(4, user.getPassword());
+			statement.setString(5, "N/a");
+			statement.setString(6, "N/a");
+			statement.setString(7, "N/a");
+			statement.setString(8, "N/a");
+			int executeUpdate = statement.executeUpdate();
 
-            Utill.suceesfullyRegister = true;
-            preparedStatement.close();
-        } catch (SQLException e) {
-        	message = Utill.failJson;;
-            e.printStackTrace();
-        }
-        return message;
+			if (executeUpdate == 1) {
+				// message = Utill.successJson;
+				// } else {
+				// message = Utill.failJson;
+				rs = statement.executeQuery("select * from user where email='" + user.getEmail() + "' and password='"
+						+ user.getPassword() + "'");
+				while (rs.next()) {
+
+					obj.put("code", "200");
+					obj.put("msg", "Registration Sucessfull");
+					obj.put("id", "" + rs.getInt("id"));
+					obj.put("email", rs.getString("email"));
+					obj.put("fname", rs.getString("fname"));
+					obj.put("lname", rs.getString("lname"));
+					obj.put("email", rs.getString("email"));
+					obj.put("fname", rs.getString("fname"));
+					obj.put("lname", rs.getString("lname"));
+					obj.put("contactno", rs.getString("contactno"));
+					obj.put("profileimage", rs.getString("profileimage"));
+					obj.put("address", rs.getString("address"));
+					obj.put("gender", rs.getString("gender"));
+				}
+				message = obj.toJSONString();
+				System.out.println(message);
+			} else {
+				obj.put("code", "201");
+				obj.put("msg", "Registration fail");
+				message = obj.toJSONString();
+				System.out.println(message);
+
+			}
+			statement.close();
+		} catch (SQLException e) {
+			obj.put("code", "201");
+			obj.put("msg", "Registration fail!!! email allready exit");
+			message = obj.toJSONString();
+			e.printStackTrace();
+		}
+		return message;
 	}
 
 }
