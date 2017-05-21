@@ -9,7 +9,6 @@ import com.wap.utility.DBcon;
 public class postdataDaoImplementation implements PostdataDAO {
 	
     DBcon dbcon=new DBcon();
-    PostdataModel postdata=new PostdataModel();
 
 	@Override
 	public void AddPostdata(PostdataModel postdata) {
@@ -62,6 +61,14 @@ public class postdataDaoImplementation implements PostdataDAO {
 		}
 		
 		return postdataRows;
+	}
+
+	@Override
+	public void DeletePostdata(int id) {
+		// TODO Auto-generated method stub
+		
+		String sql="delete from postdata where id="+id;
+		dbcon.doDelete(sql);
 	}
 
 }
