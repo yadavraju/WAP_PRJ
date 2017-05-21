@@ -13,14 +13,16 @@ public class DBcon {
        public static Statement stmt;
        public ResultSet rs;
        //configuration CONN
-       InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream( "/config.properties" );
-       Properties properties=new Properties();
+       static InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream( "/config.properties" );
+       static Properties properties=new Properties();
        static{     
            try {   
-               driver="com.mysql.jdbc.Driver";  
-               url="jdbc:mysql://localhost:3306/wapproject?useUnicode=true&characterEncoding=utf-8";  
-               user="root";  
-               password="root"; 
+        	   properties.load(inputStream);
+        	   driver=properties.getProperty("driver");
+               url=properties.getProperty("url");		 
+               //url="jdbc:mysql://localhost:3306/wapproject?useUnicode=true&characterEncoding=utf-8";  
+               user=properties.getProperty("user");  
+               password=properties.getProperty("password"); 
                Class.forName(driver);     
                conn = DriverManager.getConnection(url,user,password);  
                System.out.println("-------connection successful------");  
@@ -29,7 +31,10 @@ public class DBcon {
                System.err.println("db: " + classnotfoundexception.getMessage());     
            } catch(SQLException sqlexception) {     
                System.err.println("db.getconn(): " + sqlexception.getMessage());     
-           }     
+           } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}            
        }     
        //Constructor
        public DBcon(){     
