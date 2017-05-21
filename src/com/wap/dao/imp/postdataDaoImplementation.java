@@ -57,6 +57,7 @@ public class postdataDaoImplementation implements PostdataDAO {
 			postdata.setProduct_you_offer(rs.getString("product_you_offer"));
 			postdata.setDescribe_your_offer(rs.getString("describe_your_offer"));
 			postdata.setProduct_you_need(rs.getString("product_you_need"));
+			postdata.setDescribe_your_need(rs.getString("describe_your_need"));
 			postdata.setLike_count(rs.getInt("like_count"));
 			postdata.setComment_count(rs.getInt("comment_count"));
 			postdata.setUserid(rs.getInt("userid"));
