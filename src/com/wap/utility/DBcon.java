@@ -20,7 +20,7 @@ public class DBcon {
                driver="com.mysql.jdbc.Driver";  
                url="jdbc:mysql://localhost:3306/wapproject?useUnicode=true&characterEncoding=utf-8";  
                user="root";  
-               password="root";                
+               password="root"; 
                Class.forName(driver);     
                conn = DriverManager.getConnection(url,user,password);  
                System.out.println("-------connection successful------");  
