@@ -296,6 +296,13 @@ xsigin/signup popup
   font-size: 14px;
   font-size: 0.875rem;
 }
+#signup-firstname, #signup-lastname {
+	width: 226px;
+}
+#label-replace1 {
+	left:245px;
+}
+
 .cd-form label.image-replace {
   /* replace text with an icon */
   display: inline-block;
