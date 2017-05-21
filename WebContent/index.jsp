@@ -14,7 +14,7 @@
 			  layer.open({
 			  type: 1,
 			  title:'Make a post',
-			  area: ['600px', '360px'],
+			  area: ['500px', '276px'],
 			  shadeClose: true, 
 			  content: ''+$("#divid").html()+''
 			  });
@@ -40,9 +40,7 @@
 	
 	<!-- popup window -->
 	<div id="divid" style="display: none">
-		
-
-
+		<%@ include file="postdata.jsp" %>
 	</div>
 </body>
 </html>

@@ -554,3 +554,25 @@ xsigin/signup popup
 	margin-left: 20px;
 	/* border: 1px solid black; */
 }
+#divid {
+
+}
+
+#divpost {
+	margin: 0 auto;
+	width: 80%;
+	font-family: "PT Sans", sans-serif;
+}
+
+#tblpost {
+	border: 0px;
+	width: 100%;
+	margin-top: 20px;
+}
+#tblpost tr{
+	line-height: 35px;
+}
+
+#btnpost {
+	margin-top: 20px;
+}
