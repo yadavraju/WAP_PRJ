@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Goods Swap - Login</title>
 <link rel="stylesheet" href="css/style.css">
-<script src="jquery.min.js"></script>
+<script src="js/jquery-1.8.2.js"></script>
 </head>
 <body>
 	<div id="header">
