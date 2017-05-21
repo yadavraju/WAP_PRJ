@@ -60,7 +60,7 @@
 			<p class="fieldset">
 				<label class="image-replace cd-password" for="signup-password">Password</label>
 				<input class="full-width has-padding has-border"
-					id="signup-password" name="password" type="text"
+					id="signup-password" name="password" type="password"
 					placeholder="Password" required> <span class="cd-error-message">Error
 					message here!</span>
 			</p>
@@ -144,12 +144,13 @@
 			var email = $("#email").val();
 			var pwd = $("#pwd").val();
 
-			$.get("LoginRequest", {
+			$.post("LoginRequest", {
 				username : email,
 				password : pwd
 			}).done(function(data) {
 				//$("#loginerr").html("Login success!");
 				var objData = JSON.parse(data);
+				console.log(data);
 				if(objData.code == "200"){
 					window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
 				}else{
