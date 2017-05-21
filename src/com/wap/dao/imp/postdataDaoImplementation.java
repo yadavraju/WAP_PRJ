@@ -50,8 +50,8 @@ public class postdataDaoImplementation implements PostdataDAO {
 		
 		String sql="select * from postdata order by pid";
 		ResultSet rs=dbcon.doSelect(sql);
-		
-		if(rs.next()){
+
+		while(rs.next()){
 			PostdataModel postdata=new PostdataModel();
 			postdata.setPid(rs.getInt("pid"));
 			postdata.setProduct_you_offer(rs.getString("product_you_offer"));
@@ -71,7 +71,7 @@ public class postdataDaoImplementation implements PostdataDAO {
 	public void DeletePostdata(int id) {
 		// TODO Auto-generated method stub
 		
-		String sql="delete from postdata where id="+id;
+		String sql="delete from postdata where pid="+id;
 		dbcon.doDelete(sql);
 	}
 

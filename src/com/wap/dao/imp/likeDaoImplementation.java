@@ -32,7 +32,7 @@ public class likeDaoImplementation implements LikeDAO {
 	public void DeleteUserlike(int id) {
 		// TODO Auto-generated method stub
 		
-		String sql="delete from userlike where id="+id;
+		String sql="delete from userlike where lid="+id;
 		
 	    dbcon.doDelete(sql);
 		

@@ -31,7 +31,7 @@ public class commentDaoImplementation implements CommentDAO {
 	@Override
 	public void DeleteComment(int id) {
 		// TODO Auto-generated method stub
-		String sql="delete from comment where id="+id;
+		String sql="delete from comment where cid="+id;
 		dbcon.doDelete(sql);
 	}
 
@@ -44,6 +44,7 @@ public class commentDaoImplementation implements CommentDAO {
 		String sql="select * from comment order by cid";
 		
 		ResultSet rs=dbcon.doSelect(sql);
+		
 		while (rs.next()){
 			CommentModel comment=new CommentModel();
 			comment.setCid(rs.getInt("cid"));
