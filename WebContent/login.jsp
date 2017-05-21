@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Goods Swap - Login</title>
 <link rel="stylesheet" href="css/style.css">
-<script src="jquery.min.js"></script>
+<script src="js/jquery-1.8.2.js"></script>
 </head>
 <body>
 	<div id="header">
@@ -40,14 +40,28 @@
 		<form action="UserController" method="post" id="signupform"
 			class="cd-form">
 			<p class="fieldset">
-				<label class="image-replace" for="">First Name</label> <input
-					class="half-width has-padding has-border" id="signup-firstname"
-					name="fname" type="text" placeholder="First Name" required> <span
-					class="cd-error-message">Error message here!</span> <label
-					class="image-replace" for="">Last Name</label> <input
-					class="half-width has-padding has-border" id="signup-lastname"
-					name="lname" type="text" placeholder="Last Name" required> <span
+			
+				<label class="image-replace cd-username" for="signup-firstname">First Name</label>
+				<input class="full-width has-padding has-border" id="signup-firstname"
+					name="fname" type="text" placeholder="First Name" required /> <span
 					class="cd-error-message">Error message here!</span>
+			
+				<label class="image-replace cd-username" for="signup-lastname" id="label-replace1">Last Name</label>
+				<input class="half-width has-padding has-border" id="signup-lastname"
+					name="lname" type="text" placeholder="Last Name" required /> <span
+					class="cd-error-message">Error message here!</span>
+			
+			
+<!-- 				<label class="image-replace cd-name" for="signup-firstname">First Name</label> <input -->
+<!-- 					class="half-width has-padding has-border" id="signup-firstname" -->
+<!-- 					name="fname" type="text" placeholder="First Name" required> <span -->
+<!-- 					class="cd-error-message">Error message here!</span>  -->
+
+
+<!-- 				<label class="image-replace cd-name" for="signup-lastname">Last Name</label> <input -->
+<!-- 					class="half-width has-padding has-border" id="signup-lastname" -->
+<!-- 					name="lname" type="text" placeholder="Last Name" required> <span -->
+<!-- 					class="cd-error-message">Error message here!</span> -->
 			</p>
 
 			<p class="fieldset">
@@ -152,7 +166,7 @@
 				var objData = JSON.parse(data);
 				console.log(data);
 				if(objData.code == "200"){
-					window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
+					window.location.href = "<%=request.getContextPath()%>/HomePageServlet?id=" + objData;
 				}else{
 					console.log(objData.msg);
 					$("#loginerr").html("Email or Password not correct!");
