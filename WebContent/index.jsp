@@ -45,7 +45,7 @@
 							<span><h4><b>John Doe</b></h4></span>
 						</div>
 						<p>
-							<b>OfferItem :</b>
+							OfferItem :
 							<c:out value="${post_data.product_you_offer}"></c:out>
 						</p>
 						<p>
