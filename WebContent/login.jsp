@@ -195,10 +195,10 @@
 				//var oData = JSON.parse(data);
 				if(data.code == "200"){
 // 					console.log("ok");
-					alert("Registration is successful!");
-					window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
+					alert("Registration is successful! Now You can login");
+					<%-- window.location.href = "<%=request.getContextPath()%>/HomePageServlet"; --%>
 				}else{
-					$("#loginerr").html("Failed to register, please check the fields!");
+					$("#loginerr").html("Failed to register");
 				}
 			}).fail(function(xhr, st) {
 				$("#loginerr").html("Something is wrong:" + st);

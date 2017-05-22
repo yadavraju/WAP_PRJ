@@ -45,7 +45,10 @@ public class LoginRequest extends HttpServlet {
 		user.setPassword(password);
 		Map<String,String> map = dao.LoginUser(user);
         request.getSession().setAttribute("id", map.get("id"));
+        request.getSession().setAttribute("AllData", map);
         response.getWriter().write(map.get("message"));
+        
+       
 	}
 
 

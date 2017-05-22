@@ -11,6 +11,7 @@ import com.wap.dao.imp.PostdataDAO;
 import com.wap.dao.imp.postdataDaoImplementation;
 import com.wap.dao.imp.userDaoImplementation;
 import com.wap.model.PostdataModel;
+import com.wap.utility.Utill;
 
 /**
  * Servlet implementation class PostdataController
@@ -40,9 +41,9 @@ public class PostdataController extends HttpServlet {
 		postdata.setDescribe_your_offer(request.getParameter("describe_your_offer"));
 		postdata.setProduct_you_need(request.getParameter("product_you_need"));
 		postdata.setDescribe_your_need(request.getParameter("describe_your_need"));
-		postdata.setComment_count(Integer.parseInt(request.getParameter("like_count")));
-		postdata.setLike_count(Integer.parseInt(request.getParameter("comment_count")));
-		postdata.setUserid(Integer.parseInt(request.getParameter("userid")));
+		postdata.setComment_count(0);
+		postdata.setLike_count(0);
+		postdata.setUserid(Integer.parseInt((String) request.getSession().getAttribute("id")));
 	    
 		System.out.println("ok=====================");
 		
@@ -56,9 +57,8 @@ public class PostdataController extends HttpServlet {
 		
 		
         postdatadao.AddPostdata(postdata);
-        
-        
-        PostdataModel[] postdataRecords=new PostdataModel[10];
+        response.sendRedirect("HomePageServlet");
+//        request.getRequestDispatcher("index.jsp").forward(request, response);     
         
 	}
 

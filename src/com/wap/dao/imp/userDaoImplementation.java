@@ -24,6 +24,7 @@ public class userDaoImplementation implements UserDAO {
 	private PreparedStatement statement;
 	private ResultSet rs;
 	private JSONObject obj = new JSONObject();
+	Map<String,String> map = new HashMap<String,String>();
 
 	public userDaoImplementation() {
 		conn = DBUtil.getConnection();
@@ -33,7 +34,7 @@ public class userDaoImplementation implements UserDAO {
 	public Map<String,String> LoginUser(UserModel user) {
 		// TODO Auto-generated method stub
 		String message = null;
-		Map<String,String> map = new HashMap<String,String>();
+		
 
 		try {
 			String q = "select email, password from user where email = ? and password = ?";
@@ -60,7 +61,19 @@ public class userDaoImplementation implements UserDAO {
 					obj.put("profileimage", rs.getString("profileimage"));
 					obj.put("address", rs.getString("address"));
 					obj.put("gender", rs.getString("gender"));
+					
+					//This is done for putting data ino session
 					map.put("id", String.valueOf(rs.getInt("id")));
+					map.put("email", rs.getString("email"));
+					map.put("fname", rs.getString("fname"));
+					map.put("lname", rs.getString("lname"));
+					map.put("email", rs.getString("email"));
+					map.put("fname", rs.getString("fname"));
+					map.put("lname", rs.getString("lname"));
+					map.put("contactno", rs.getString("contactno"));
+					map.put("profileimage", rs.getString("profileimage"));
+					map.put("address", rs.getString("address"));
+					map.put("gender", rs.getString("gender"));
 				}
 				message = obj.toJSONString();
 				System.out.println(message);
@@ -120,6 +133,8 @@ public class userDaoImplementation implements UserDAO {
 					obj.put("profileimage", rs.getString("profileimage"));
 					obj.put("address", rs.getString("address"));
 					obj.put("gender", rs.getString("gender"));
+					
+
 				}
 				message = obj.toJSONString();
 				System.out.println(message);
