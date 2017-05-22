@@ -166,7 +166,7 @@
 				var objData = JSON.parse(data);
 				console.log(data);
 				if(objData.code == "200"){
-					window.location.href = "<%=request.getContextPath()%>/HomePageServlet?id=" + objData;
+					window.location.href = "<%=request.getContextPath()%>/HomePageServlet";
 				}else{
 					console.log(objData.msg);
 					$("#loginerr").html("Email or Password not correct!");
