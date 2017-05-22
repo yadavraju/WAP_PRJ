@@ -11,14 +11,14 @@
 <body>
 	<div id="header">
 		<form action="" id="submitform" class="cd-form">
-			<label>E-mail <input id="email" type="email" required
+			<label style="color:white">E-mail <input id="email" type="email" required
 				oninvalid="setCustomValidity('Enter your email');"
 				oninput="setCustomValidity('');" />
-			</label> <label>Password <input id="pwd" type="password" size=8
+			</label> <label style="color:white">Password <input id="pwd" type="password" size=8
 				required oninvalid="setCustomValidity('Enter your password');"
 				oninput="setCustomValidity('');" />
 			</label>
-			<button type="submit" id="loginbtn">Log in</button>
+			<label><input id="inputlogin" type="submit" value=" Log in "></label>
 			<br />
 			<div>
 				<p id="loginerr"></p>
@@ -80,7 +80,7 @@
 			</p>
 
 			<p class="fieldset">
-				<input class="full-width has-padding" type="submit" value="Sign up">
+				<input class="full-width has-padding" type="submit" value="Sign up" style="color:white">
 			</p>
 		</form>
 

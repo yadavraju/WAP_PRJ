@@ -672,3 +672,27 @@ xsigin/signup popup
   overflow: hidden;
   margin: auto; */
 }
+
+#divlogo {
+	float: left;
+}
+
+#divfuncontop {
+	float: left;
+}
+
+#inputlogin {
+	color: white;
+	border: 1px solid white;
+	border-radius: 5px;
+	padding: 2px;
+	margin: 5px 0;
+}
+
+#abc div{
+	line-height: 30px
+}
+
+#abc div span{
+	font-weight: bold;
+}
