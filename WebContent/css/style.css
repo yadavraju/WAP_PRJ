@@ -675,6 +675,8 @@ xsigin/signup popup
 
 #divlogo {
 	float: left;
+	width: 100px;
+	height: 100px;
 }
 
 #divfuncontop {
@@ -695,4 +697,13 @@ xsigin/signup popup
 
 #abc div span{
 	font-weight: bold;
+}
+
+#inputsearch {
+	margin-top: 36px;
+	margin-left: 200px;
+}
+
+#btnsearch {
+
 }

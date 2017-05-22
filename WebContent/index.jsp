@@ -30,8 +30,9 @@
 			<img id="imglogo" src="" />
 		</div>
 		<div id="divfuncontop">
-			<input id="search" placeholder="Enter product id" />
-			<button id="btnPost" class="button">Post</button>
+			<input id="inputsearch" placeholder="Enter product id" style="width: 280px"/>
+			<a href=""><img src="css/images/Search.png" style="vertical-align: bottom"/></a>
+			<button id="btnpost" class="button" style="margin-left:50px">Post</button>
 		</div>
 	</div>
 	<div id="divbody">
