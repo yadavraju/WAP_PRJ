@@ -1,6 +1,7 @@
 package com.wap.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class PostdataModel {
 	private int pid;
@@ -12,6 +13,8 @@ public class PostdataModel {
 	private int comment_count;
 	private int userid;
 	private Date date;
+	private List<CommentModel> listCommentModel;
+	
 	public int getPid() {
 		return pid;
 	}
@@ -65,6 +68,12 @@ public class PostdataModel {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public List<CommentModel> getListCommentModel() {
+		return listCommentModel;
+	}
+	public void setListCommentModel(List<CommentModel> listCommentModel) {
+		this.listCommentModel = listCommentModel;
 	}
 	
 	

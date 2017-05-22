@@ -24,6 +24,7 @@ public class commentDaoImplementation implements CommentDAO {
 		String sql="insert into comment(postid,userid,comment) values("+
 		           postid+","+userid+",'"+comment+"')";
 		
+		System.out.println(sql);
 		dbcon.doInsert(sql);
 		System.out.println("insert comment successfully");
 	}
@@ -56,5 +57,27 @@ public class commentDaoImplementation implements CommentDAO {
 		}
 		return commentList;
 	}
-
+	
+	@Override
+	public List<CommentModel> CommentListByID(int postid) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		List<CommentModel> commentList=new ArrayList<CommentModel>();
+		
+		String sql="select * from comment where postid=" + postid + " order by postid";
+		
+		System.out.println("----sql----" + sql);
+		ResultSet rs=dbcon.doSelect(sql);
+		
+		while (rs.next()){
+			CommentModel comment=new CommentModel();
+			comment.setCid(rs.getInt("cid"));
+			comment.setPostid(rs.getInt("postid"));
+			comment.setUserid(rs.getInt("userid"));
+			comment.setComment(rs.getString("comment"));
+			comment.setDate(rs.getDate("date"));
+			commentList.add(comment);
+		}
+		return commentList;
+	}
 }

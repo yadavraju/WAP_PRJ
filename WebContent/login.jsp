@@ -11,10 +11,10 @@
 <body>
 	<div id="header">
 		<form action="" id="submitform" class="cd-form">
-			<label style="color:white">E-mail <input id="email" type="email" required
+			<label style="color:white">E-mail <input id="email" type="email" required value="y@yahoo.com"
 				oninvalid="setCustomValidity('Enter your email');"
 				oninput="setCustomValidity('');" />
-			</label> <label style="color:white">Password <input id="pwd" type="password" size=8
+			</label> <label style="color:white">Password <input id="pwd" type="password" size=8 value="123456"
 				required oninvalid="setCustomValidity('Enter your password');"
 				oninput="setCustomValidity('');" />
 			</label>

@@ -9,4 +9,5 @@ public interface CommentDAO {
 	public void AddComment(CommentModel commentmodel);
 	public void DeleteComment(int id);
 	public List<CommentModel> CommentList() throws SQLException;
+	public List<CommentModel> CommentListByID(int postid) throws SQLException;
 }
