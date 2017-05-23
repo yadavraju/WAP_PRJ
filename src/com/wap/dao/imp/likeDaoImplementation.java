@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.wap.model.LikeModel;
+import com.wap.model.PostdataModel;
 import com.wap.utility.DBcon;
 
 public class likeDaoImplementation implements LikeDAO {
@@ -39,20 +40,17 @@ public class likeDaoImplementation implements LikeDAO {
 	}
 
 	@Override
-	public List<LikeModel> UserlikeList() throws SQLException {
+	public List<PostdataModel> UserLikeList(int pid) throws SQLException {
 		// TODO Auto-generated method stub
 		
-		List<LikeModel> userlikeList =new ArrayList<LikeModel>();
+		List<PostdataModel> userlikeList =new ArrayList<PostdataModel>();
 		
-		String sql="select * from userlike order by lid";
+		String sql="select * from postdata where pid=" + pid;
 		ResultSet rs=dbcon.doSelect(sql);
 		
 		while(rs.next()){
-			LikeModel userlike=new LikeModel();
-			userlike.setLid(rs.getInt("lid"));
-			userlike.setPostid(rs.getInt("postid"));
-			userlike.setUserid(rs.getInt("userid"));
-			userlike.setDate(rs.getDate("date"));
+			PostdataModel userlike=new PostdataModel();
+			userlike.setLike_count(rs.getInt("like_count"));
 			userlikeList.add(userlike);
 		}
 		

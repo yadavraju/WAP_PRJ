@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.wap.dao.imp.CommentDAO;
+import com.wap.dao.imp.LikeDAO;
 import com.wap.dao.imp.PostdataDAO;
 import com.wap.dao.imp.commentDaoImplementation;
+import com.wap.dao.imp.likeDaoImplementation;
 import com.wap.dao.imp.postdataDaoImplementation;
 import com.wap.model.CommentModel;
 import com.wap.model.PostdataModel;
@@ -26,7 +28,7 @@ import com.wap.model.PostdataModel;
 public class HomePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostdataDAO postdatadao;
-	private CommentDAO commentbyiddatadao;   
+	private CommentDAO commentbyiddatadao;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -44,7 +46,6 @@ public class HomePageServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		System.out.println(request.getParameter("id"));
 //		System.out.println(request.getParameter("postid"));
-		int pid=0;
 //		System.out.println("showcomment-------------" + request.getParameter("showcomment"));
 ////		if(request.getParameter("showcomment") != null && !"".equals(request.getParameter("showcomment"))){
 //			pid = Integer.parseInt(request.getParameter("showcomment"));
@@ -60,11 +61,18 @@ public class HomePageServlet extends HttpServlet {
 				List<PostdataModel> list = postdatadao.PostdataQuery();
 				for (PostdataModel postdataModel : list) {
 					List<CommentModel> listCommentModel = commentbyiddatadao.CommentListByID(postdataModel.getPid());
+//					if(request.getAttribute("list_like_counts") == null) {
+//						List<PostdataModel> likeList = likedatadao.UserLikeList(postdataModel.getPid());
+//						request.setAttribute("list_like_counts", likeList);
+//					}
+					
 					System.out.println(listCommentModel.size()+"====");
-					postdataModel.setListCommentModel(listCommentModel);;
+					postdataModel.setListCommentModel(listCommentModel);
 
 				}
+				
 				request.setAttribute("list_of_posted_data", list);
+				System.out.println("id:" + request.getSession().getAttribute("id").toString());
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

@@ -9,4 +9,5 @@ public interface PostdataDAO {
 	public void AddPostdata(PostdataModel postdata);
 	public List<PostdataModel> PostdataQuery() throws SQLException;
 	public void DeletePostdata(int id);
+	public void IncrementLikes(int pid) throws SQLException;
 }

@@ -25,23 +25,13 @@
 	})
 	
 	function toggleComment(postid) {
-// 		$.get("HomePageServlet?showcomment=" + postid,{})
-// 		.done(function(data) {
-// 			console.log(data);
-// 			var parsedData = JSON.parse(data);
-			var divid = "#div" + postid;
-// 			console.log("---div---99-" + parsedData.length);
-			if($(divid).css("display") == "none") {
-				$(divid).css("display","block");
-				
-// 				for(var i=0;i<parsedData.length;i++){
-// // 					$("#divcomments"+postid).html($("#divcomments"+postid).html()+"<span>" + parsedData[i].comment + "</span><br/>");
-// 					$("#divcomments"+postid).append("<span><em style=color:blue>" + parsedData[i].userid + "</em> " + parsedData[i].comment + "</span><br/>");
-// 				}
-			}
-			else
-				$(divid).css("display","none");
-// 		})
+		var divid = "#div" + postid;
+		if($(divid).css("display") == "none") {
+			$(divid).css("display","block");
+			
+		}
+		else
+			$(divid).css("display","none");
 	}
 	
 	function updateComment(userid, postid) {
@@ -54,12 +44,24 @@
 			.done(function(data) {
 				console.log("Comments added successfully");
 				$("#writecomment"+postid).val("");
-				$("#appendcomment"+postid).append("<span><em style=color:blue>" + userid + "</em> " + comment + "</span><br/>");
+				$("#divcomments"+postid).append("<span><em style=color:blue>" + userid + "</em> " + comment + "</span><br/>");
 				//$("html,body").animate({scrollTop:$("#wc"+postid).offset().top},1000);
 // 				$("#divcomments"+postid).html($("#divcomments"+postid).html()+"<span>" + comment + "</span><br/>");
 
 			})
 		}
+
+	}
+	
+	function updateLikes(postid) {
+		var url = "IncrementLikeServlet?postid=" + postid;
+		console.log("url=" + url);
+		$.get(url ,{})
+		.done(function(data) {
+			console.log("Likes added successfully");
+			var curLikeCount = parseInt($("#likesvalue"+postid).text());
+			$("#likesvalue"+postid).text(curLikeCount + 1);
+		})
 
 	}
 </script>
@@ -112,24 +114,24 @@
 								<div>
 									<span style="display: inline-block;margin-left:10px" >
 										<span >
-										<a href=""><img src="css/images/Likes.png"> <span style="margin-top: 1px;vertical-align: middle;display: inline-block;height: 30px"> <c:out value="${post_data.like_count}"></c:out></span></a>
+										<a  style="cursor: pointer" onclick="updateLikes(${post_data.pid})"><img src="css/images/Likes.png"> <span id="likesvalue${post_data.pid}" style="margin-top: 1px;vertical-align: middle;display: inline-block;height: 30px"> <c:out value="${post_data.like_count}"></c:out></span></a>
 										</span>
 										<span style="margin-left:30px">
-										<a href="#" onclick="toggleComment(${post_data.pid})"><img src="css/images/Comments.png" >  Comment</a>
+										<a style="cursor: pointer" onclick="toggleComment(${post_data.pid})"><img src="css/images/Comments.png" >  Comment</a>
 										</span>
 									</span>
 								</div>
 								<div id="div${post_data.pid}" class="cdivcomment" style="display:none;width:50%;border: 1px solid gray;border-radius:10px">
-									<c:forEach items="${post_data.listCommentModel}" var="post_comment_data">
-										<div id="divcomments${post_data.pid}" style="margin-left:15px">
-											<em style="color:blue">${post_comment_data.userid}</em> ${post_comment_data.comment}
-										</div>
-									</c:forEach>
-									<div id="appendcomment${post_data.pid}" style="margin-left:15px">
+									<div id="divcomments${post_data.pid}" style="margin-left:15px">
+										<c:forEach items="${post_data.listCommentModel}" var="post_comment_data">
+											<span><em style="color:blue">${post_comment_data.userid}</em> ${post_comment_data.comment}</span><br/>
+										</c:forEach>
 									</div>
+<%-- 									<div id="appendcomment${post_data.pid}" style="margin-left:15px"> --%>
+<!-- 									</div> -->
 									<span>
 										<input id="writecomment${post_data.pid}" style="margin-left:15px" id="inputcomment" placeholder="Write a comment..." />
-										<button onclick="updateComment(${post_data.userid},${post_data.pid})">Enter</button><br/><br/>
+										<button onclick="updateComment(${sessionScope.id},${post_data.pid})">Enter</button><br/><br/>
 									</span>
 								</div>
 							</div>
