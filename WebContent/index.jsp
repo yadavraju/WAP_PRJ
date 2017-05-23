@@ -74,7 +74,7 @@
 		<div id="divfuncontop">
 			<input id="inputsearch" placeholder="Enter product id" style="width: 280px"/>
 			<a href=""><img src="css/images/Search.png" style="vertical-align: bottom"/></a>
-			<button id="btnpost" class="button" style="margin-left:50px">Post</button>
+			<button id="btnPost" class="button" style="margin-left:50px">Post</button>
 		</div>
 	</div>
 	<div id="divbody">
