@@ -50,7 +50,7 @@ public class userDaoImplementation implements UserDAO {
 				while (rs.next()) {
 
 					obj.put("code", "200");
-					obj.put("msg", "Login Sucessfull");
+					obj.put("msg", "Login Sucessfully");
 					obj.put("id", "" + rs.getInt("id"));
 					obj.put("email", rs.getString("email"));
 					obj.put("fname", rs.getString("fname"));
