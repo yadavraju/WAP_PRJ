@@ -3,6 +3,7 @@ package com.wap.dao.imp;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.wap.model.PostdataModel;
@@ -65,6 +66,7 @@ public class postdataDaoImplementation implements PostdataDAO {
 			postdataList.add(postdata);
 		}
 		
+		Collections.reverse(postdataList);
 		return postdataList;
 	}
 
