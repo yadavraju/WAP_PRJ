@@ -54,7 +54,7 @@
 			.done(function(data) {
 				console.log("Comments added successfully");
 				$("#writecomment"+postid).val("");
-				$("#divcomments"+postid).append("<span><em style=color:blue>" + userid + "</em> " + comment + "</span><br/>");
+				$("#appendcomment"+postid).append("<span><em style=color:blue>" + userid + "</em> " + comment + "</span><br/>");
 				//$("html,body").animate({scrollTop:$("#wc"+postid).offset().top},1000);
 // 				$("#divcomments"+postid).html($("#divcomments"+postid).html()+"<span>" + comment + "</span><br/>");
 
@@ -125,6 +125,8 @@
 											<em style="color:blue">${post_comment_data.userid}</em> ${post_comment_data.comment}
 										</div>
 									</c:forEach>
+									<div id="appendcomment${post_data.pid}" style="margin-left:15px">
+									</div>
 									<span>
 										<input id="writecomment${post_data.pid}" style="margin-left:15px" id="inputcomment" placeholder="Write a comment..." />
 										<button onclick="updateComment(${post_data.userid},${post_data.pid})">Enter</button><br/><br/>
