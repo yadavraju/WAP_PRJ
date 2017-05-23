@@ -30,6 +30,7 @@ public class userDaoImplementation implements UserDAO {
 		conn = DBUtil.getConnection();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String,String> LoginUser(UserModel user) {
 		// TODO Auto-generated method stub
