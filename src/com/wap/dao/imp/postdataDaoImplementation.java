@@ -49,7 +49,7 @@ public class postdataDaoImplementation implements PostdataDAO {
 		// TODO Auto-generated method stub
 		List<PostdataModel> postdataList=new ArrayList<PostdataModel>();
 		
-		String sql="select * from postdata order by pid";
+		String sql="select * from postdata order by date desc";
 		ResultSet rs=dbcon.doSelect(sql);
 
 		while(rs.next()){
@@ -66,7 +66,7 @@ public class postdataDaoImplementation implements PostdataDAO {
 			postdataList.add(postdata);
 		}
 		
-		Collections.reverse(postdataList);
+		//Collections.reverse(postdataList);
 		return postdataList;
 	}
 
