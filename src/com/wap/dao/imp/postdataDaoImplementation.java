@@ -107,4 +107,32 @@ public class postdataDaoImplementation implements PostdataDAO {
 		
 		return isLike;
 	}
+
+	@Override
+	public List<PostdataModel> PostdataQuery(String queryString) throws SQLException {
+		// TODO Auto-generated method stub
+		List<PostdataModel> postdataList=new ArrayList<PostdataModel>();
+		
+		String sql="SELECT * FROM postdata WHERE product_you_offer LIKE '%"+queryString+"%'"+
+				    "OR describe_your_offer LIKE '%"+queryString+"%'"+
+				    "OR product_you_need LIKE '%"+queryString+"%'"+
+				    "OR describe_your_need LIKE '%"+queryString+"%' ORDER BY DATE DESC"; 
+		
+		ResultSet rs=dbcon.doSelect(sql);
+		while (rs.next()){
+			PostdataModel postdata=new PostdataModel();
+			postdata.setPid(rs.getInt("pid"));
+			postdata.setProduct_you_offer(rs.getString("product_you_offer"));
+			postdata.setDescribe_your_offer(rs.getString("describe_your_offer"));
+			postdata.setProduct_you_need(rs.getString("product_you_need"));
+			postdata.setDescribe_your_need(rs.getString("describe_your_need"));
+			postdata.setLike_count(rs.getInt("like_count"));
+			postdata.setComment_count(rs.getInt("comment_count"));
+			postdata.setUserid(rs.getInt("userid"));
+			postdata.setDate(rs.getDate("date"));
+			postdataList.add(postdata);
+		}
+		
+		return postdataList;
+	}
 }
