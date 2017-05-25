@@ -35,9 +35,12 @@ public class IncrementLikeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int userid = Integer.parseInt(request.getParameter("userid"));
 		int pid = Integer.parseInt(request.getParameter("postid"));
 		try {
-			postdatadao.IncrementLikes(pid);
+			int isLikeDone = postdatadao.IncrementLikes(userid, pid);
+			System.out.println("isLikeDone----" + isLikeDone);
+			response.getWriter().write(String.valueOf(isLikeDone));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

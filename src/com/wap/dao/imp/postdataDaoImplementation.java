@@ -79,9 +79,32 @@ public class postdataDaoImplementation implements PostdataDAO {
 	}
 	
 	@Override
-	public void IncrementLikes(int pid) throws SQLException  {
+	public int IncrementLikes(int userid, int pid) throws SQLException  {
 		// TODO Auto-generated method stub
-		String sql = "update postdata set like_count = like_count+1 where pid=" + pid;
-		dbcon.doUpdate(sql);
+		int isLike = 0;
+		String sel = "select isLike from userlike where userid=" + userid + " and postid=" + pid;
+		System.out.println("sel----" + sel);
+		ResultSet rs = dbcon.doSelect(sel);
+		
+		if(!rs.next()) {
+			String insert="insert into userlike(postid,userid) values(" + pid + "," + userid + ")";
+			dbcon.doInsert(insert);
+			
+			String sql = "update postdata set like_count = like_count+1 where pid=" + pid;
+			dbcon.doUpdate(sql);
+			
+			isLike = 1;
+		}
+//		else {
+//			String updateSql = "update userlike set isLike = 1 where userid=" + userid + " and postid=" + pid;
+//			dbcon.doUpdate(updateSql);
+//			
+//			String sql = "update postdata set like_count = like_count+1 where pid=" + pid;
+//			dbcon.doUpdate(sql);
+//			
+//			isLike = 1;
+//		}
+		
+		return isLike;
 	}
 }

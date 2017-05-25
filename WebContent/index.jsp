@@ -53,14 +53,17 @@
 
 	}
 	
-	function updateLikes(postid) {
-		var url = "IncrementLikeServlet?postid=" + postid;
-		console.log("url=" + url);
-		$.get(url ,{})
+	function updateLikes(userid, postid) {
+// 		var url = "IncrementLikeServlet?postid=" + postid;
+// 		console.log("url=" + url);
+		$.get("IncrementLikeServlet" ,{userid:userid, postid: postid})
 		.done(function(data) {
-			console.log("Likes added successfully");
-			var curLikeCount = parseInt($("#likesvalue"+postid).text());
-			$("#likesvalue"+postid).text(curLikeCount + 1);
+			console.log("Likes added successfully----" + data);
+			if(data == 1) {
+				console.log("data----" + data);
+				var curLikeCount = parseInt($("#likesvalue"+postid).text());
+				$("#likesvalue"+postid).text(curLikeCount + 1);
+			}
 		})
 
 	}
@@ -114,7 +117,7 @@
 								<div>
 									<span style="display: inline-block;margin-left:10px" >
 										<span >
-										<a  style="cursor: pointer" onclick="updateLikes(${post_data.pid})"><img src="css/images/Likes.png"> <span id="likesvalue${post_data.pid}" style="margin-top: 1px;vertical-align: middle;display: inline-block;height: 30px"> <c:out value="${post_data.like_count}"></c:out></span></a>
+										<a style="cursor: pointer" onclick="updateLikes(${sessionScope.id},${post_data.pid})"><img src="css/images/Likes.png"> <span id="likesvalue${post_data.pid}" style="margin-top: 1px;vertical-align: middle;display: inline-block;height: 30px"> <c:out value="${post_data.like_count}"></c:out></span></a>
 										</span>
 										<span style="margin-left:30px">
 										<a style="cursor: pointer" onclick="toggleComment(${post_data.pid})"><img src="css/images/Comments.png" >  Comment</a>
