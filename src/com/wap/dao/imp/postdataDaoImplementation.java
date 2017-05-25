@@ -113,11 +113,15 @@ public class postdataDaoImplementation implements PostdataDAO {
 		// TODO Auto-generated method stub
 		List<PostdataModel> postdataList=new ArrayList<PostdataModel>();
 		
-		String sql="SELECT * FROM postdata WHERE product_you_offer LIKE '%"+queryString+"%'"+
+		String sql="";
+		if(queryString.trim().length()>0){
+		sql="SELECT * FROM postdata WHERE product_you_offer LIKE '%"+queryString+"%'"+
 				    "OR describe_your_offer LIKE '%"+queryString+"%'"+
 				    "OR product_you_need LIKE '%"+queryString+"%'"+
 				    "OR describe_your_need LIKE '%"+queryString+"%' ORDER BY DATE DESC"; 
-		
+		}else{
+			sql="select * from postdata order by date desc";
+		}
 		ResultSet rs=dbcon.doSelect(sql);
 		while (rs.next()){
 			PostdataModel postdata=new PostdataModel();
