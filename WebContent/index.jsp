@@ -28,7 +28,6 @@
 		var divid = "#div" + postid;
 		if($(divid).css("display") == "none") {
 			$(divid).css("display","block");
-			
 		}
 		else
 			$(divid).css("display","none");
@@ -36,11 +35,11 @@
 	
 	function updateComment(userid, postid) {
 		var comment = $("#writecomment"+postid).val();
-		var url = "CommentController?userid=" + userid + "&postid=" + postid + "&comment=" + comment;
-		console.log("url=" + url);
+// 		var url = "CommentController?userid=" + userid + "&postid=" + postid + "&comment=" + comment;
+// 		console.log("url=" + url);
 		if(comment != "")
 		{
-			$.get(url ,{})
+			$.get("CommentController" ,{userid:userid,postid:postid,comment:comment})
 			.done(function(data) {
 				console.log("Comments added successfully");
 				$("#writecomment"+postid).val("");
@@ -50,7 +49,6 @@
 
 			})
 		}
-
 	}
 	
 	function updateLikes(userid, postid) {
