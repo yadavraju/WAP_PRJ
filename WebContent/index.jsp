@@ -111,7 +111,7 @@ function divfunc(){
 					<div id="container">
 						<div id="avatar-flip" style="position: absolute;">
 							<span style="display: inline-block; width: 80px; height: 50px"><img
-								src="css/images/photo.jpg" height="50" width="50"></img></span> <span
+								src="<%=request.getContextPath()%>/AvatarUpload/user_${post_data.userid}_100.jpg" height="50" width="50"></img></span> <span
 								style="display: inline-block; width: 100px; height: 50px; position: absolute; top: 50%; left: 80px;"><b>John
 									Doe</b></span>
 									
