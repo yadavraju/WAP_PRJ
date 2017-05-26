@@ -28,27 +28,23 @@ var locationY;
 			// 设定地图参数，将当前位置的经纬度设置为中心点
 			locationX = coords.latitude;
 			locationY = coords.longitude;
+	  		$("#locationX_id").val(locationX);
+	 		$("#locationY_id").val(locationY);
 		 
 		});
 	})
 
-	
-	function submitFrom(){
-  		$("#locationX_id").val(locationX);
- 		$("#locationY_id").val(locationY);
- 		document.getElementById("myform").submit();   
-	}
 </script>
 </head>
 <body>
-	<form action="PostdataController" method="post" id="myform">
+	<form action="PostdataController" method="post" id="myform" name="myform">
 	
 		<div id="divpost">
 			<table id="tblpost">
 				<tbody>
 					<tr>
 						<td>Product you offer</td>
-						<td><input type=text name="product_you_offer"></td>
+						<td><input type=text name="product_you_offer" ></td>
 					</tr>
 					<tr>
 						<td>Description you offer</td>
@@ -65,9 +61,7 @@ var locationY;
 					<tr>
 						<td colspan="2" align="center">
 						
-						<input type="button" value="Submit" onclick="submitFrom()"/>
-<!-- 						<button id="btnpost" -->
-<!-- 								type=button onclick="submitFrom()">Submit</button> -->
+						<button id="btnpost" type="submit" >Submit</button>
 								</td>
 					</tr>
 				</tbody>

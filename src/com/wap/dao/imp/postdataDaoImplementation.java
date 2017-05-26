@@ -98,6 +98,7 @@ public class postdataDaoImplementation implements PostdataDAO {
 		
 		if(!rs.next()) {
 			String insert="insert into userlike(postid,userid) values(" + pid + "," + userid + ")";
+			System.out.println(insert);
 			dbcon.doInsert(insert);
 			
 			String sql = "update postdata set like_count = like_count+1 where pid=" + pid;

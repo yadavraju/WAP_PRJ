@@ -12,9 +12,11 @@
 <script src="js/layer.js"></script>
 
 <script>
+var xx_value ,yy_value;
 
-
-function  map_onclick(){
+function  map_onclick(xxx_value,yyy_value){
+	xx_value = xxx_value;
+	yy_value = yyy_value;
 	  layer.open({
 		  type: 1,
 		  area: ['600px', '500px'],
@@ -25,7 +27,7 @@ function  map_onclick(){
 }
 
 function getLocationValue(){
-	return new Array($("#x_value").val(),$("#y_value").val())
+	return new Array(xx_value,yy_value)
 }
 
 function divfunc(){
@@ -62,7 +64,7 @@ function divfunc(){
 // 		console.log("url=" + url);
 		if(comment != "")
 		{
-			$.get("CommentController" ,{userid:userid,postid:postid,comment:comment})
+			$.get("CommentController" ,{"userid":userid,"postid":postid,"comment":comment})
 			.done(function(data) {
 				console.log("Comments added successfully");
 				$("#writecomment"+postid).val("");
@@ -115,9 +117,8 @@ function divfunc(){
 								style="display: inline-block; width: 100px; height: 50px; position: absolute; top: 50%; left: 80px;"><b>John
 									Doe</b></span>
 									
-									<input type="button" onclick="map_onclick()" value="map"/>
-									<input type="hidden" id="x_value"  value="30"/>
-									<input type="hidden" id="y_value" value="40"/>
+									<input type="button" onclick="map_onclick(${post_data.latitude},${post_data.longitude})" value="map"/>
+							 
 						</div>
 						<div id="abc" style="margin-top: 80px">
 							<div>

@@ -38,6 +38,7 @@ public class PostdataController extends HttpServlet {
 		PostdataModel postdata=new PostdataModel();
 		System.out.println(request.getParameter("locationX"));
 		System.out.println(request.getParameter("locationY"));
+		System.out.println(request.getParameter("product_you_offer"));
 		postdata.setProduct_you_offer(request.getParameter("product_you_offer"));
 		postdata.setDescribe_your_offer(request.getParameter("describe_your_offer"));
 		postdata.setProduct_you_need(request.getParameter("product_you_need"));
@@ -59,7 +60,7 @@ public class PostdataController extends HttpServlet {
 		System.out.println(postdata.getProduct_you_offer());
 		System.out.println(postdata.getUserid());
 		
-		
+		System.out.println("postdata===" + postdata);
         postdatadao.AddPostdata(postdata);
         response.sendRedirect("HomePageServlet");
 //        request.getRequestDispatcher("index.jsp").forward(request, response);     
