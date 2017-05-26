@@ -24,6 +24,7 @@ public class postdataDaoImplementation implements PostdataDAO {
 	    String logi = postdata.getLongitude();
 	    String lati = postdata.getLatitude();
 	    int like_count=postdata.getLike_count();
+	    System.out.println("like_count=" + like_count);
 	    int comment_count=postdata.getComment_count();
 	    int userid=postdata.getUserid();
 	        
@@ -41,10 +42,10 @@ public class postdataDaoImplementation implements PostdataDAO {
 		               "'"+describe_your_offer+"',"+
 		               "'"+product_you_need+"',"+
 		               "'"+describe_your_need+"',"+
-		               "'"+logi+"',"+
-		               "'"+lati+"',"+
 		               like_count+","+
 		               comment_count+","+
+		               "'"+logi+"',"+
+		               "'"+lati+"',"+
 		               userid+")";
 		              
 		dbcon.doInsert(sql);             
