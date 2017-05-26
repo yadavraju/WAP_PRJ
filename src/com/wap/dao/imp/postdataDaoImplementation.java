@@ -143,6 +143,9 @@ public class postdataDaoImplementation implements PostdataDAO {
 			postdata.setComment_count(rs.getInt("comment_count"));
 			postdata.setUserid(rs.getInt("userid"));
 			postdata.setDate(rs.getDate("date"));
+			
+			postdata.setLongitude(rs.getString("longitude"));
+			postdata.setLatitude(rs.getString("latitude"));
 			postdataList.add(postdata);
 		}
 		
