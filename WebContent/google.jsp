@@ -5,8 +5,11 @@
 <head>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <title>Google Map</title>
-<script type="text/javascript"
-	src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<!-- <script type="text/javascript" -->
+<!-- 	src="http://maps.google.com/maps/api/js?sensor=false&libraries=places,geometry"></script> -->
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqtra5yJnJAG0d4zUJlq588XyuY_WhD0c&callback=initMap"
+  type="text/javascript"></script>
+	
 <script type="text/javascript">
 	var locationX;// 经度
 	var locationY;// 纬度
