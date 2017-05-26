@@ -57,9 +57,13 @@ public class HomePageServlet extends HttpServlet {
 //			}
 //	        response.getWriter().write(new Gson().toJson(request.getAttribute("list_of_posted_comment_by_id")));
 //		}else{
+			String queryString = "";
+			List<PostdataModel> list = null;
 			try {
-				String queryString=request.getParameter("inputsearch")==null?" ":request.getParameter("inputsearch").trim();
-				List<PostdataModel> list = postdatadao.PostdataQuery(queryString);
+				
+				queryString= request.getParameter("inputsearch") == null?"":request.getParameter("inputsearch").trim();
+				System.out.println("queryString:" + queryString);
+				list = postdatadao.PostdataQuery(queryString);
 				for (PostdataModel postdataModel : list) {
 					List<CommentModel> listCommentModel = commentbyiddatadao.CommentListByID(postdataModel.getPid());
 //					if(request.getAttribute("list_like_counts") == null) {
@@ -73,13 +77,18 @@ public class HomePageServlet extends HttpServlet {
 				}
 				
 				request.setAttribute("list_of_posted_data", list);
+				System.out.println(new Gson().toJson(list));
+				
 				System.out.println("id:" + request.getSession().getAttribute("id").toString());
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+//			if(queryString.isEmpty())
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+//			else
+//				response.getWriter().write(new Gson().toJson(list));
 //		}
 	 
 	}

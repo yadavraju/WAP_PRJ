@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -88,7 +87,16 @@ function divfunc(){
 				$("#likesvalue"+postid).text(curLikeCount + 1);
 			}
 		})
-
+	}
+	
+	function doSearch() {
+// 		var url = "IncrementLikeServlet?postid=" + postid;
+// 		console.log("url=" + url);
+		var kw = $("#inputsearch").val();
+		console.log("kw---" + kw);
+// 		var url = "HomePageServlet?inputsearch=" + kw.trim();
+// 		console.log("url:" + url);
+		document.getElementById("myForm").submit();
 	}
 </script>
 </head>
@@ -97,10 +105,18 @@ function divfunc(){
 		<div id="divlogo">
 			<img id="imglogo" src="" />
 		</div>
-		<div id="divfuncontop">
-			<input name="inputsearch" id="inputsearch" placeholder="Enter product id" style="width: 280px"/>
-			<a href=""><img src="css/images/Search.png" style="vertical-align: bottom"/></a>
-			<button id="btnPost" class="button" style="margin-left:50px">Post</button>
+		<div id="divfuncontop"> 
+			<div style="display: inline-block">
+			<form id="myForm" action="HomePageServlet">
+				<span>
+					<input name="inputsearch" id="inputsearch" placeholder="Enter keyword" style="width: 280px" value="${param.inputsearch}" />
+					<a style="cursor:pointer" onclick="doSearch()"><img src="css/images/Search.png" style="vertical-align: bottom"/></a>
+				</span>
+			</form>
+			</div>
+			<div style="display: inline-block">
+				<span><button id="btnPost" class="button" style="margin-left:50px">Post</button></span>
+			</div>
 		</div>
 	</div>
 	<div id="divbody">

@@ -130,6 +130,7 @@ public class postdataDaoImplementation implements PostdataDAO {
 				    " OR describe_your_offer LIKE '%"+queryString+"%'"+
 				    " OR product_you_need LIKE '%"+queryString+"%'"+
 				    " OR describe_your_need LIKE '%"+queryString+"%' ORDER BY DATE DESC"; 
+		System.out.println("sql=" + sql);
 		}else{
 			sql="select * from postdata order by date desc";
 		}
