@@ -77,7 +77,7 @@
 </script>
 </head>
 <body onload="init()">
-	<div id="map" style="width: 400px; height: 400px"></div>
+	<div id="map" style="width: 600px; height: 400px"></div>
 	<div id="locationXY" style="width: 400px; height: 30px"></div>
 	<div id="locationName" style="width: 400px; height: 30px"></div>
 </body>
