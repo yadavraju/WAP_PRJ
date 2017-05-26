@@ -58,7 +58,8 @@ public class HomePageServlet extends HttpServlet {
 //	        response.getWriter().write(new Gson().toJson(request.getAttribute("list_of_posted_comment_by_id")));
 //		}else{
 			try {
-				List<PostdataModel> list = postdatadao.PostdataQuery();
+				String queryString=request.getParameter("inputsearch")==null?" ":request.getParameter("inputsearch").trim();
+				List<PostdataModel> list = postdatadao.PostdataQuery(queryString);
 				for (PostdataModel postdataModel : list) {
 					List<CommentModel> listCommentModel = commentbyiddatadao.CommentListByID(postdataModel.getPid());
 //					if(request.getAttribute("list_like_counts") == null) {

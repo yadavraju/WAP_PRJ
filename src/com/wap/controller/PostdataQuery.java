@@ -38,9 +38,9 @@ public class PostdataQuery extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		List<PostdataModel> postdataList=new ArrayList<PostdataModel>();
-		
+		String queryString=request.getParameter("inputsearch")==null?" ":request.getParameter("inputsearch").trim();
 		try {
-			postdataList=postdatadao.PostdataQuery();
+			postdataList=postdatadao.PostdataQuery(queryString);
 			request.setAttribute("postdataList", postdataList);
 			request.getRequestDispatcher("postQuery.jsp").forward(request, response);
 			

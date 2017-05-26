@@ -50,34 +50,34 @@ public class postdataDaoImplementation implements PostdataDAO {
 		dbcon.doInsert(sql);             
 	}
 
-	@Override
-	public List<PostdataModel> PostdataQuery() throws SQLException {
-		// TODO Auto-generated method stub
-		List<PostdataModel> postdataList=new ArrayList<PostdataModel>();
-		
-		String sql="select * from postdata order by date desc";
-		ResultSet rs=dbcon.doSelect(sql);
-
-		while(rs.next()){
-			PostdataModel postdata=new PostdataModel();
-			postdata.setPid(rs.getInt("pid"));
-			postdata.setProduct_you_offer(rs.getString("product_you_offer"));
-			postdata.setDescribe_your_offer(rs.getString("describe_your_offer"));
-			postdata.setProduct_you_need(rs.getString("product_you_need"));
-			postdata.setDescribe_your_need(rs.getString("describe_your_need"));
-			postdata.setLike_count(rs.getInt("like_count"));
-			postdata.setComment_count(rs.getInt("comment_count"));
-			postdata.setUserid(rs.getInt("userid"));
-			postdata.setDate(rs.getDate("date"));
-			
-			postdata.setLongitude(rs.getString("longitude"));
-			postdata.setLatitude(rs.getString("latitude"));
-			postdataList.add(postdata);
-		}
-		
-		//Collections.reverse(postdataList);
-		return postdataList;
-	}
+//	@Override
+//	public List<PostdataModel> PostdataQuery() throws SQLException {
+//		// TODO Auto-generated method stub
+//		List<PostdataModel> postdataList=new ArrayList<PostdataModel>();
+//		
+//		String sql="select * from postdata order by date desc";
+//		ResultSet rs=dbcon.doSelect(sql);
+//
+//		while(rs.next()){
+//			PostdataModel postdata=new PostdataModel();
+//			postdata.setPid(rs.getInt("pid"));
+//			postdata.setProduct_you_offer(rs.getString("product_you_offer"));
+//			postdata.setDescribe_your_offer(rs.getString("describe_your_offer"));
+//			postdata.setProduct_you_need(rs.getString("product_you_need"));
+//			postdata.setDescribe_your_need(rs.getString("describe_your_need"));
+//			postdata.setLike_count(rs.getInt("like_count"));
+//			postdata.setComment_count(rs.getInt("comment_count"));
+//			postdata.setUserid(rs.getInt("userid"));
+//			postdata.setDate(rs.getDate("date"));
+//			
+//			postdata.setLongitude(rs.getString("longitude"));
+//			postdata.setLatitude(rs.getString("latitude"));
+//			postdataList.add(postdata);
+//		}
+//		
+//		//Collections.reverse(postdataList);
+//		return postdataList;
+//	}
 
 	@Override
 	public void DeletePostdata(int id) {
