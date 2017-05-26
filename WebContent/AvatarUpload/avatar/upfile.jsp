@@ -1,6 +1,5 @@
 <%@page import="java.io.*,sun.misc.*,java.util.*"%>
 <%
-	//String path = application.getRealPath("../AvatarUpload/");
 	String path = request.getRealPath("/AvatarUpload");
 	
 	String _savePath = path + "/";
