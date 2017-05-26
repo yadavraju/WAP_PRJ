@@ -21,6 +21,8 @@ public class postdataDaoImplementation implements PostdataDAO {
 	    String describe_your_offer=postdata.getDescribe_your_offer();
 	    String product_you_need=postdata.getProduct_you_need();
 	    String describe_your_need=postdata.getDescribe_your_need();
+	    String logi = postdata.getLongitude();
+	    String lati = postdata.getLatitude();
 	    int like_count=postdata.getLike_count();
 	    int comment_count=postdata.getComment_count();
 	    int userid=postdata.getUserid();
@@ -32,11 +34,15 @@ public class postdataDaoImplementation implements PostdataDAO {
 		              "describe_your_need,"+
 		              "like_count,"+
 		              "comment_count,"+
+		              "longitude,"+
+		              "latitude,"+
 		              "userid) VALUES ("+
 		               "'"+product_you_offer+"',"+
 		               "'"+describe_your_offer+"',"+
 		               "'"+product_you_need+"',"+
 		               "'"+describe_your_need+"',"+
+		               "'"+logi+"',"+
+		               "'"+lati+"',"+
 		               like_count+","+
 		               comment_count+","+
 		               userid+")";
@@ -63,6 +69,9 @@ public class postdataDaoImplementation implements PostdataDAO {
 			postdata.setComment_count(rs.getInt("comment_count"));
 			postdata.setUserid(rs.getInt("userid"));
 			postdata.setDate(rs.getDate("date"));
+			
+			postdata.setLongitude(rs.getString("longitude"));
+			postdata.setLatitude(rs.getString("latitude"));
 			postdataList.add(postdata);
 		}
 		

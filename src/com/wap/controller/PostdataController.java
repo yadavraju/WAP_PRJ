@@ -42,6 +42,9 @@ public class PostdataController extends HttpServlet {
 		postdata.setDescribe_your_offer(request.getParameter("describe_your_offer"));
 		postdata.setProduct_you_need(request.getParameter("product_you_need"));
 		postdata.setDescribe_your_need(request.getParameter("describe_your_need"));
+
+		postdata.setLatitude(request.getParameter("locationX"));
+		postdata.setLongitude(request.getParameter("locationY"));
 		postdata.setComment_count(0);
 		postdata.setLike_count(0);
 		postdata.setUserid(Integer.parseInt((String) request.getSession().getAttribute("id")));

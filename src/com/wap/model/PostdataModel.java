@@ -15,6 +15,9 @@ public class PostdataModel {
 	private Date date;
 	private List<CommentModel> listCommentModel;
 	
+	private String latitude;
+	private String longitude;
+	
 	public int getPid() {
 		return pid;
 	}
@@ -75,6 +78,20 @@ public class PostdataModel {
 	public void setListCommentModel(List<CommentModel> listCommentModel) {
 		this.listCommentModel = listCommentModel;
 	}
+	public String getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+	public String getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+	
+	
 	
 	
 	
