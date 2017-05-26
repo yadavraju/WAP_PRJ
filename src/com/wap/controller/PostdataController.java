@@ -36,7 +36,8 @@ public class PostdataController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PostdataModel postdata=new PostdataModel();
-		
+		System.out.println(request.getParameter("locationX"));
+		System.out.println(request.getParameter("locationY"));
 		postdata.setProduct_you_offer(request.getParameter("product_you_offer"));
 		postdata.setDescribe_your_offer(request.getParameter("describe_your_offer"));
 		postdata.setProduct_you_need(request.getParameter("product_you_need"));
