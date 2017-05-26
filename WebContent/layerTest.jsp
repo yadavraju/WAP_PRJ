@@ -23,12 +23,19 @@ $('#test2').on('click', function(){
   content: '\<\div style="padding:20px;">自定义内容\<\/div>'+$("#divid").html()+''
   });
 });
+
+function aa(){
+	
+	  $('#layui-layer-moves, div[id^="layui-layer-shade"],div[id^="layui-layer-shade"],div[id^="layui-layer"]').remove();
+
+  
+    
+ }
 </script>
 
 <div id="divid" style="display:none">
-<form action="">
-00000000000000
-</form>
+<button id="test2" class="button" onclick="aa()">运行上述例子</button>
+
 </div>
 </body>
 </html>
