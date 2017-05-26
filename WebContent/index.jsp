@@ -10,7 +10,30 @@
 <link rel="stylesheet" href="css_profile/reset.css">
 <script src="js/jquery-1.8.2.js"></script>
 <script src="js/layer.js"></script>
+
 <script>
+
+
+function  map_onclick(){
+	  layer.open({
+		  type: 1,
+		  area: ['600px', '500px'],
+		  shadeClose: true, 
+		  title:'<h3 style="font-size:25px;font-weight:bold">location</h3>',
+		  content: $("#div_map").html()+''
+		  });
+}
+
+function getLocationValue(){
+	return new Array($("#x_value").val(),$("#y_value").val())
+}
+
+function divfunc(){
+	 $('#layui-layer-moves, div[id^="layui-layer-shade"],div[id^="layui-layer-shade"],div[id^="layui-layer"]').remove();
+ }
+ 
+
+
 	$(function() {
 		$('#btnPost').on('click', function() {
 			layer.open({
@@ -91,6 +114,10 @@
 								src="css/images/photo.jpg" height="50" width="50"></img></span> <span
 								style="display: inline-block; width: 100px; height: 50px; position: absolute; top: 50%; left: 80px;"><b>John
 									Doe</b></span>
+									
+									<input type="button" onclick="map_onclick()" value="map"/>
+									<input type="hidden" id="x_value"  value="30"/>
+									<input type="hidden" id="y_value" value="40"/>
 						</div>
 						<div id="abc" style="margin-top: 80px">
 							<div>
@@ -147,6 +174,11 @@
 	<!-- popup window -->
 	<div id="divid" style="display: none">
 		<%@ include file="postdata.jsp"%>
+	</div>
+	
+	<!-- popup window -->
+	<div id="div_map" style="display: none">
+			<iframe src="google.jsp"   name="mainFrame" frameborder="0" marginheight="0" marginwidth="0" height="450" width="100%" style="overflow-x:hidden;overflow-y:hidden;"></iframe>
 	</div>
 	
 </body>

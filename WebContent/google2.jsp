@@ -13,18 +13,12 @@
 	
 	
 	function init() {
-		
-		var locationArr = parent.getLocationValue() 
-// 		alert(locationArr[0] +"    =  "+ locationArr[1])
-	 	locationX = locationArr[0];
-	 	locationY = locationArr[1];
-		
 		// 获取当前位置
 		navigator.geolocation.getCurrentPosition(function(position) {
-// 			var coords = position.coords;
-// 			// 设定地图参数，将当前位置的经纬度设置为中心点
-// 			locationX = coords.latitude;
-// 			locationY = coords.longitude;
+			var coords = position.coords;
+			// 设定地图参数，将当前位置的经纬度设置为中心点
+			locationX = coords.latitude;
+			locationY = coords.longitude;
 			var xy = document.getElementById("locationXY");
 			xy.innerHTML = "Latitude: " + locationX + " ,    Longitude: " + locationY;
 
