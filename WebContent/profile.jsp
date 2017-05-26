@@ -28,7 +28,7 @@ function  img_onclick(){
 
 
 function divfunc(){
-	 $("#img_id_id").attr("src","/AvatarUpload/user_${sessionScope.id}_100.jpg?"+Math.random());
+	 $("#img_id_id").attr("src","<%=request.getContextPath() %>/AvatarUpload/user_${sessionScope.id}_100.jpg?"+Math.random());
 	 $('#layui-layer-moves, div[id^="layui-layer-shade"],div[id^="layui-layer-shade"],div[id^="layui-layer"]').remove();
  }
 </script>
@@ -41,7 +41,7 @@ function divfunc(){
 	<div class="container">
 		<div class="avatar-flip">
 			<a style="cursor: pointer" id="img_id" onclick="img_onclick()">
-			<img src="/AvatarUpload/user_<%=(String)request.getSession().getAttribute("id") %>_100.jpg" id="img_id_id" height="100" width="100"></a>
+			<img src="<%=request.getContextPath() %>/AvatarUpload/user_<%=(String)request.getSession().getAttribute("id") %>_100.jpg" id="img_id_id" height="100" width="100"></a>
 		</div>
 		<h2><%=map1.get("fname") + " " + map1.get("lname")%></h2>
 		<h4><%=map1.get("email")%></h4>
