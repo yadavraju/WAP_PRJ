@@ -92,8 +92,8 @@ function divfunc(){
 	function doSearch() {
 // 		var url = "IncrementLikeServlet?postid=" + postid;
 // 		console.log("url=" + url);
-		var kw = $("#inputsearch").val();
-		console.log("kw---" + kw);
+// 		var kw = $("#inputsearch").val();
+// 		console.log("kw---" + kw);
 // 		var url = "HomePageServlet?inputsearch=" + kw.trim();
 // 		console.log("url:" + url);
 		document.getElementById("myForm").submit();
@@ -103,7 +103,7 @@ function divfunc(){
 <body>
 	<div id="divheader">
 		<div id="divlogo">
-			<img id="imglogo" src="" />
+			<img id="imglogo" src="css/images/logo.png" />
 		</div>
 		<div id="divfuncontop"> 
 			<div style="display: inline-block">
@@ -132,8 +132,10 @@ function divfunc(){
 								src="<%=request.getContextPath()%>/AvatarUpload/user_${post_data.userid}_100.jpg" height="50" width="50"></img></span> <span
 								style="display: inline-block; width: 100px; height: 50px; position: absolute; top: 50%; left: 80px;"><b>John
 									Doe</b></span>
-									
-									<input type="button" onclick="map_onclick(${post_data.latitude},${post_data.longitude})" value="map"/>
+									<span style="display: inline-block;position: relative;left: 220px;top: -40px;">
+										<a style="cursor: pointer" onclick="map_onclick(${post_data.latitude},${post_data.longitude})"><img src="css/images/location.png" /></a>
+									</span>
+<%-- 									<input type="button" onclick="map_onclick(${post_data.latitude},${post_data.longitude})" value="map"/> --%>
 							 
 						</div>
 						<div id="abc" style="margin-top: 80px">
@@ -150,7 +152,7 @@ function divfunc(){
 								</div>
 								<div>
 									<span>Describe your need</span>
-									<c:out value="${post_data.product_you_need}"></c:out>
+									<c:out value="${post_data.describe_your_need}"></c:out>
 								</div>
 								<div>
 									<span>Posted Date</span>

@@ -3,6 +3,11 @@
 Primary style
 
 -------------------------------- */
+#imglogo {
+	margin-top: 20px;
+    margin-left: 60px;
+}
+
 html * {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
