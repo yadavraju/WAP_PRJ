@@ -57,7 +57,7 @@ function divfunc(){
 			$(divid).css("display","none");
 	}
 	
-	function updateComment(userid, postid) {
+	function updateComment(userid, postid, fname, lname) {
 		var comment = $("#writecomment"+postid).val();
 // 		var url = "CommentController?userid=" + userid + "&postid=" + postid + "&comment=" + comment;
 // 		console.log("url=" + url);
@@ -65,7 +65,7 @@ function divfunc(){
 		{
 			$.get("CommentController" ,{"userid":userid,"postid":postid,"comment":comment})
 			.done(function(data) {
-				console.log("Comments added successfully");
+				console.log("Comments added successfully--" + data);
 				$("#writecomment"+postid).val("");
 				$("#divcomments"+postid).append("<span><em style=color:blue>" + userid + "</em> " + comment + "</span><br/>");
 				//$("html,body").animate({scrollTop:$("#wc"+postid).offset().top},1000);
@@ -130,8 +130,8 @@ function divfunc(){
 						<div id="avatar-flip" style="position: absolute;">
 							<span style="display: inline-block; width: 80px; height: 50px"><img
 								src="<%=request.getContextPath()%>/AvatarUpload/user_${post_data.userid}_100.jpg" height="50" width="50"></img></span> <span
-								style="display: inline-block; width: 100px; height: 50px; position: absolute; top: 50%; left: 80px;"><b>John
-									Doe</b></span>
+								style="display: inline-block; width: 100px; height: 50px; position: absolute; top: 50%; left: 80px;">
+								<b>${post_data.fname}&nbsp;${post_data.lname}</b></span>
 									<span style="display: inline-block;position: relative;left: 220px;top: -40px;">
 										<a style="cursor: pointer" onclick="map_onclick(${post_data.latitude},${post_data.longitude})"><img src="css/images/location.png" /></a>
 									</span>
